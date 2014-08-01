@@ -1,6 +1,7 @@
 const SCRIPTS_SRC_DIR = './src/scripts';
 const STYLES_SRC_DIR = './src/styles';
 const COMPILED_DIR = './compiled';
+const LIVERELOAD_PORT = 35730;
 
 var path = require('path');
 var vinyl_source = require('vinyl-source-stream');
@@ -17,7 +18,7 @@ gulp.task( 'compile css', function(){
 			paths: [ STYLES_SRC_DIR ]
 		}))
 		.pipe( gulp.dest( COMPILED_DIR ) )
-		.pipe( gulp_livereload() );
+		.pipe( gulp_livereload( LIVERELOAD_PORT ) );
 });
 
 gulp.task( 'compile js', function(){

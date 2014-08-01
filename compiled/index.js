@@ -9238,4 +9238,9 @@ $(function(){
 		$('#drivvvel').text( comment.body );
 	});
 });
+
+// livereload
+if( window.location.host === '' ){
+	$.getScript('http://localhost:35730/livereload.js');
+}
 },{"jquery":1}]},{},[2])
