@@ -9248,8 +9248,14 @@ var getRandomShotComments = function( callback ){
 var filterComments = function( comments ){
     var filtered_comments = $.grep( comments, function( comment, i ){
         var trimmed_comment_body = $.trim( comment.body );
+        // low word count
         var word_count = trimmed_comment_body.split( /,?\s+/ ).length;
-        return ( word_count < 6 );
+        var word_count_low = ( word_count < 6 );
+        // no @ mentions
+        var no_mentions = !/(?:\s|^)@/.test( trimmed_comment_body );
+        // no URLs
+        var no_urls = !/(?:\s|^)(?:http)/.test( trimmed_comment_body );
+        return word_count_low && no_mentions && no_urls;
     });
     return filtered_comments;
 };
