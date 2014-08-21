@@ -1,6 +1,7 @@
 var $ = require('jquery');
 
 var NO_OP = function(){};
+
 var shots_page = 1;
 var drivvvel_shots = [];
 var drivvvel_comments = [];

@@ -7,6 +7,7 @@ var path = require('path');
 var vinyl_source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var gulp = require('gulp');
+var g_util = require('gulp-util');
 var gulp_less = require('gulp-less');
 var gulp_livereload = require('gulp-livereload');
 var gulp_uglify = require('gulp-uglify');
@@ -30,9 +31,12 @@ gulp.task( 'compile js', function(){
 			.pipe( gulp.dest( COMPILED_DIR ) );
 	};
 	w.on( 'update', bundle );
+	w.on( 'update', function(){
+		g_util.log('index.js updated');
+	});
 	w.on( 'error', function(){
 		console.log('error', arguments);
-	})
+	});
 	return bundle();
 });
 

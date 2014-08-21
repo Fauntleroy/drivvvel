@@ -9194,6 +9194,7 @@ return jQuery;
 var $ = require('jquery');
 
 var NO_OP = function(){};
+
 var shots_page = 1;
 var drivvvel_shots = [];
 var drivvvel_comments = [];
@@ -9254,7 +9255,7 @@ var filterComments = function( comments ){
         // no @ mentions
         var no_mentions = !/(?:\s|^)@/.test( trimmed_comment_body );
         // no URLs
-        var no_urls = !/(?:\s|^)(?:http)/.test( trimmed_comment_body );
+        var no_urls = !/(?:http)/.test( trimmed_comment_body );
         return word_count_low && no_mentions && no_urls;
     });
     return filtered_comments;
