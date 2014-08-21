@@ -1,6 +1,28 @@
 /* We tell LESS that these are LESS files so it will *actually* import them */
 @import (less) 'vendor/normalize.css';
 
+.list-reset() {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	> li {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+@-webkit-keyframes appear {
+	0% {
+		-webkit-transform: translateZ( -500px );
+		opacity: 0;
+	}
+	100% {
+		-webkit-transform: translateZ( 0 );
+		opacity: 1;
+	}
+}
+
 #drivvvel {
 	position: absolute;
 	top: 50%;
@@ -10,4 +32,13 @@
 	text-align: center;
 	font-size: 48px;
 	font-family: Georgia, serif;
+}
+
+#comments {
+	.list-reset();
+	-webkit-perspective: 500px;
+}
+
+.appear {
+	-webkit-animation: appear 1000ms;
 }
