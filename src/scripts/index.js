@@ -3,6 +3,7 @@ var velocity = require('velocity-animate');
 require('./vendor/velocity.ui.js');
 
 var NO_OP = function(){};
+var TRANSITION_DURATION = 1000;
 
 var shots_page = 1;
 var drivvvel_shots = [];
@@ -100,22 +101,20 @@ displayComment = function(){
 			if( $prev ){
 				$prev
 					.velocity('transition.slideDownOut', {
-						duration: 1000,
-						complete: function(){
-							$prev.remove();
-						}
+						duration: TRANSITION_DURATION
 					});
+                // velocity leaves these around if the user leaves the tab
+                // manually eliminate them  after the delay
+                setTimeout( $prev.remove.bind($prev), TRANSITION_DURATION );
 			}
 			$next
 				.appendTo( $comments )
 				.hide()
-				.delay( 1000 )
+				.delay( TRANSITION_DURATION )
 				.velocity('transition.slideDownIn', {
-					duration: 1000,
-					complete: function(){
-						$prev = $next;
-					}
+					duration: TRANSITION_DURATION
 				});
+            $prev = $next;
 			setTimeout( displayComment, 5000 );
 		});
 	});
