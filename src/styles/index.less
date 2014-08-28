@@ -1,5 +1,9 @@
 /* We tell LESS that these are LESS files so it will *actually* import them */
 @import (less) 'vendor/normalize.css';
+@import (less) url(http://fonts.googleapis.com/css?family=Pacifico);
+
+@color_background: #ea4c89;
+@color_foreground: #eee;
 
 .list-reset() {
 	list-style-type: none;
@@ -23,6 +27,12 @@
 	}
 }
 
+html {
+	font-family: Pacifico, serif;
+	color: @color_foreground;
+	background: @color_background;
+}
+
 #drivvvel {
 	position: absolute;
 	top: 50%;
@@ -31,7 +41,6 @@
 	margin: -100px 0 0 -400px;
 	text-align: center;
 	font-size: 48px;
-	font-family: Georgia, serif;
 }
 
 #comments {
